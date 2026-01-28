@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Indie+Flower&family=Inter:wght@400;600&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FDFBF7;
+  --color-maroon: #8B2635;
+  --color-gold: #D4AF37;
+  
+  --font-family-handwriting: "Patrick Hand", cursive;
+  --font-family-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-cream);
+    font-family: var(--font-family-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  /* Animated Mesh Gradient Background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: linear-gradient(135deg, #FFFBF0 0%, #FFE4E6 25%, #F3E8FF 50%, #FFFBF0 75%, #FFE4E6 100%);
+    background-size: 400% 400%;
+    animation: meshGradient 15s ease infinite;
+  }
+  
+  /* Film Grain Texture */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    animation: grain 8s steps(10) infinite;
+  }
+}
+
+@keyframes meshGradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+/* Handwritten Caption Style */
+.handwritten-caption {
+  font-family: var(--font-family-handwriting);
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+
+.handwritten-caption-right {
+  font-family: var(--font-family-handwriting);
+  transform: rotate(2deg);
+  display: inline-block;
+}
