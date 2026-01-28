@@ -99,12 +99,6 @@ const TwinQuiz = () => {
       </section>
     );
   }
-            Take Quiz Again
-          </motion.button>
-        </motion.div>
-      </section>
-    );
-  }
 
   return (
     <section className="py-20 px-4">
