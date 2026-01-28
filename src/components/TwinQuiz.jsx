@@ -7,22 +7,22 @@ const TwinQuiz = () => {
       id: 1,
       question: "What is her go-to comfort food?",
       options: ["Pizza 🍕", "Ice Cream 🍦", "Biryani 🍛", "Chocolate 🍫"],
-      correct: 2,
-      feedback: ["Not quite!", "Close!", "Yasss! 🎉", "Nope!"]
+      correct: 3,
+      feedback: ["Not quite!", "Close!", "Try again!", "Yasss! 🎉"]
     },
     {
       id: 2,
       question: "Who takes longer to get ready?",
       options: ["Me 😅", "Her 💅", "We're both quick ⚡", "Depends on the mood 🤷"],
-      correct: 1,
-      feedback: ["Hmm...", "Haha yes! 💯", "Nice try!", "Maybe!"]
+      correct: 3,
+      feedback: ["Hmm...", "Not really!", "Nice try!", "Haha yes! 💯"]
     },
     {
       id: 3,
       question: "What is her most used slang word?",
       options: ["Bestie 💕", "Literally 🙄", "Vibe ✨", "Slay 💅"],
-      correct: 0,
-      feedback: ["Yesss bestie! 🎊", "Not really!", "Close!", "Nah!"]
+      correct: 3,
+      feedback: ["Close!", "Not really!", "Almost!", "Yesss slay! 🎊"]
     }
   ];
 
@@ -60,7 +60,6 @@ const TwinQuiz = () => {
   };
 
   if (quizComplete) {
-    const percentage = (score / questions.length) * 100;
     return (
       <section className="py-20 px-4">
         <motion.h2
@@ -80,24 +79,26 @@ const TwinQuiz = () => {
           <p className="text-3xl font-bold text-gray-700 my-6">
             You scored: {score}/{questions.length}
           </p>
-          {percentage >= 66 ? (
-            <div className="bg-gradient-to-br from-pink-100 to-pink-200 p-8 rounded-2xl">
-              <p className="font-handwriting text-3xl text-pink-600 mb-2">
-                Certified Twins! 🐼👯‍♀️
-              </p>
-              <p className="text-lg text-gray-600">You know each other so well! 💕</p>
-            </div>
-          ) : (
-            <div className="p-8">
-              <p className="text-xl text-gray-600">We need more twin time! 😄</p>
-            </div>
-          )}
+          <div className="bg-gradient-to-br from-pink-100 to-purple-200 p-8 rounded-2xl">
+            <p className="font-handwriting text-3xl text-pink-600 mb-4">
+              We need more twin time! 💕
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              No matter the score, we should spend more time together nonetheless... Miss you! 🥺✨
+            </p>
+          </div>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={resetQuiz}
             className="mt-6 bg-gradient-to-r from-maroon to-pink-500 text-white px-8 py-3 rounded-full text-lg font-handwriting shadow-lg"
           >
+            Take Quiz Again
+          </motion.button>
+        </motion.div>
+      </section>
+    );
+  }
             Take Quiz Again
           </motion.button>
         </motion.div>
